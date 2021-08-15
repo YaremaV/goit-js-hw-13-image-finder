@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":[],"mappings":";;;AACA,aADA,QAAA,oBACA,QAAA","file":"src.dd370b9e.js","sourceRoot":"..\\src","sourcesContent":["import './CSS/common.css';\r\nimport './JS/fetch';"]}
