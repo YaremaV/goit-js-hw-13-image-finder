@@ -6,10 +6,6 @@ import photoCards from '../Tamplates/photo-card';
 const refs = getRefs();
 const photoApiServer = new PhotoApiServer();
 
-let searchQuery = '';
-
-
-
 
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore)
@@ -17,17 +13,22 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore)
 function onSearch(e) {
     e.preventDefault();
 
+    clearPhotoCards();
     photoApiServer.query = e.currentTarget.elements.query.value;
     photoApiServer.resetPage();
-    photoApiServer.fetchPhoto().then(hits=>console.log(hits))
+    photoApiServer.fetchPhoto().then(renderPhotoCard)
 }
 
 function onLoadMore() {
-    photoApiServer.fetchPhoto().then(hits=>console.log(hits))
+    photoApiServer.fetchPhoto().then(renderPhotoCard)
 }
 
-function renderPhotoCard(photo) {
-    const markupList = photoCards(photo);
-    refs.cardGallery.innerHTML = markupList;
+function renderPhotoCard(hits) {
+    
+    refs.cardGallery.insertAdjacentHTML('beforeend', photoCards(hits));
     // deleteError();
+}
+
+function clearPhotoCards() {
+    refs.cardGallery.innerHTML = '';
 }
