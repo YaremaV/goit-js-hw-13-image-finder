@@ -1,41 +1,66 @@
+
 const API_KEY = '22938064-7e67cff9dc13648fb3a6e967b';
 const BASE_URL = 'https://pixabay.com/api/';
-const options = {
-  headers: {
-    Authorization: API_KEY,
-  },
-};
+// const options = {
+//     headers: {
+//         Authorization: API_KEY,
+//   },
+// };
 
-export default class NewsApiService {
-  constructor() {
-    this.searchQuery = '';
-    this.page = 1;
-  }
 
-  fetchCards() {
-    const url = `${BASE_URL}/everything?q=${this.searchQuery}&language=en&pageSize=5&page=${this.page}`;
+//  function photoApiService(searchQuery) {
+// //  const options = {
+// //          headers: {
+// //             Autorization: '22938064-7e67cff9dc13648fb3a6e967b'
+// //         }
+// //     };
 
-    return fetch(url, options)
-      .then(response => response.json())
-      .then(({ articles }) => {
-        this.incrementPage();
-        return articles;
-      });
-  }
+//     const url = `${BASE_URL}?image_type=photo&orientation=horizontal&q=${searchQuery}&page=1&per_page=12&key=${API_KEY}`;
 
-  incrementPage() {
-    this.page += 1;
-  }
+//     fetch(url, options)
+//         .then(response => response.json())
+//         .then(console.log)
+//         }
 
-  resetPage() {
-    this.page = 1;
-  }
 
-  get query() {
-    return this.searchQuery;
-  }
+// export default { photoApiService };
 
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
+
+export default class PhotoApiServer{
+    constructor(){
+        this.searchQuery = '';
+        this.page = 1;
+    }
+
+    fetchPhoto(searchQuery) {
+         console.log(this)
+            const options = {
+        // headers: {
+        //     Autorization: '22938064-7e67cff9dc13648fb3a6e967b'
+        // }
+    };
+
+    const url = `${BASE_URL}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
+
+        return fetch(url, options)
+            .then(response => response.json())
+            .then(data => {
+                
+                this.page += 1;
+
+                return data.hits;
+            });
+    }
+
+    resetPage() {
+        this.page = 1;
+    }
+    
+    get query() {
+        return this.searchQuery;
+    }
+
+    set query(newQuery) {
+        this.searchQuery = newQuery;
+    }
 }

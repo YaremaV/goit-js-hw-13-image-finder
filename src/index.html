@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+    <title>image-finder</title>
 </head>
 <body>
-    <form class="search-form" id="search-form">
+    <h1>Find any images</h1>
+    <div>
+      <form class="search-form" id="search-form">
   <input
   class="form-control"
     type="text"
@@ -15,11 +21,29 @@
     autocomplete="off"
     placeholder="Search images..."
   />
+  
 </form>
 
-<ul class="gallery">
+<ul class="gallery" id="js-gallery">
   <!-- Список <li> с карточками изображений -->
 </ul>
+
+  <button
+      type="button"
+      class="btn btn-primary button"
+      data-action="load-more"
+    >
+      <span
+        class="spinner-border spinner-border-sm spinner is-hidden"
+        role="status"
+        aria-hidden="true"
+      ></span>
+
+      <span class="label">Показать ещё</span>
+    </button>
+
+    </div>
+
     
     <script src="./index.js"></script>
 </body>
