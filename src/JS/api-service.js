@@ -1,30 +1,6 @@
 
 const API_KEY = '22938064-7e67cff9dc13648fb3a6e967b';
 const BASE_URL = 'https://pixabay.com/api/';
-// const options = {
-//     headers: {
-//         Authorization: API_KEY,
-//   },
-// };
-
-
-//  function photoApiService(searchQuery) {
-// //  const options = {
-// //          headers: {
-// //             Autorization: '22938064-7e67cff9dc13648fb3a6e967b'
-// //         }
-// //     };
-
-//     const url = `${BASE_URL}?image_type=photo&orientation=horizontal&q=${searchQuery}&page=1&per_page=12&key=${API_KEY}`;
-
-//     fetch(url, options)
-//         .then(response => response.json())
-//         .then(console.log)
-//         }
-
-
-// export default { photoApiService };
-
 
 export default class PhotoApiServer{
     constructor(){
