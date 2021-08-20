@@ -8,8 +8,8 @@
     "pnotify": "^5.2.0",
     "posthtml-include": "^1.7.1"
   },
-  "name": "goit-js-hw-10-food-service",
-  "description": "goit-js-hw-10-food-service",
+  "name": "goit-js-hw-13-image-finder",
+  "description": "goit-js-hw-13-image-finder",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
