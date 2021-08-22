@@ -236,6 +236,7 @@
     "ieee754": "^1.2.1",
     "import-fresh": "^2.0.0",
     "indexes-of": "^1.0.1",
+    "infinite-scroll": "^4.0.1",
     "inflight": "^1.0.6",
     "inherits": "^2.0.4",
     "is-absolute-url": "^2.1.0",

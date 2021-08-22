@@ -9,32 +9,36 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
+
 const refs = getRefs();
 const photoApiServer = new PhotoApiServer();
 
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore)
+// refs.loadMoreBtn.addEventListener('click', onLoadMore)
 
 function onSearch(e) {
     e.preventDefault();
 
-    photoApiServer.query = e.currentTarget.elements.query.value;
+    photoApiServer.query = e.currentTarget.elements.query.value.trim();
 
         if (photoApiServer.query === '') {
-    return alert('Строка поиска пустая')
-}
+         return error({
+          text: 'Input line is empty, enter query',
+        });
+    }
 
     photoApiServer.resetPage();
+    clearPhotoCards();
     photoApiServer.fetchPhoto().then(hits => {
-        clearPhotoCards();
         renderPhotoCard(hits);
+        photoApiServer.incrementPage();
     })
 }
 
-function onLoadMore() {
-    photoApiServer.fetchPhoto().then(renderPhotoCard)
-}
+// function onLoadMore() {
+//     photoApiServer.fetchPhoto().then(renderPhotoCard)
+// }
 
 function renderPhotoCard(hits) {
     
@@ -52,3 +56,22 @@ function deleteError() {
     errorMessage.style.display = 'none';
   }
 }
+
+const onEntry = entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && photoApiServer.query !== '') {
+            console.log(photoApiServer.query)
+             photoApiServer.fetchPhoto().then(hits => {
+                 renderPhotoCard(hits);
+                 photoApiServer.incrementPage();
+    })
+        }
+    });
+};
+
+
+const options = {
+    rootMargin: '150px',
+}
+const observer = new IntersectionObserver(onEntry, options);
+observer.observe(refs.observerInter)

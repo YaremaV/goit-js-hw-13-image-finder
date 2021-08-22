@@ -3,6 +3,7 @@ export default function getRefs() {
     cardGallery: document.querySelector('.gallery'),
     searchForm: document.getElementById('search-form'),
     input: document.querySelector('.form-control'),
-    loadMoreBtn: document.querySelector('.btn')
+    // loadMoreBtn: document.querySelector('.btn')
+    observerInter: document.querySelector('.i__observer')
   };
 }
