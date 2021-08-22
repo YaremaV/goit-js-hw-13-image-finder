@@ -4,18 +4,14 @@ import PhotoApiServer from './api-service';
 import photoCards from '../Tamplates/photo-card';
 
 import { error } from '@pnotify/core';
-
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
-
 const refs = getRefs();
 const photoApiServer = new PhotoApiServer();
 
-
 refs.searchForm.addEventListener('submit', onSearch);
-// refs.loadMoreBtn.addEventListener('click', onLoadMore)
 
 function onSearch(e) {
     e.preventDefault();
@@ -31,14 +27,18 @@ function onSearch(e) {
     photoApiServer.resetPage();
     clearPhotoCards();
     photoApiServer.fetchPhoto().then(hits => {
+        if (hits.length <= 0) {
+             return error({
+          text: 'Incorect input',
+        });
+        }
         renderPhotoCard(hits);
         photoApiServer.incrementPage();
     })
+        .catch(err => {
+       console.log(err)
+    })
 }
-
-// function onLoadMore() {
-//     photoApiServer.fetchPhoto().then(renderPhotoCard)
-// }
 
 function renderPhotoCard(hits) {
     
