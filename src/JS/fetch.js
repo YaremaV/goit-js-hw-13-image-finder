@@ -8,9 +8,12 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
+import setLightbox from './lightbox.js';
+
 const refs = getRefs();
 const photoApiServer = new PhotoApiServer();
 
+refs.cardGallery.addEventListener('click', setLightbox);
 refs.searchForm.addEventListener('submit', onSearch);
 
 function onSearch(e) {
@@ -18,7 +21,8 @@ function onSearch(e) {
 
     photoApiServer.query = e.currentTarget.elements.query.value.trim();
 
-        if (photoApiServer.query === '') {
+    if (photoApiServer.query === '') {
+            clearPhotoCards();
          return error({
           text: 'Input line is empty, enter query',
         });
