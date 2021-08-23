@@ -69,37 +69,6 @@ img {
   display: none;
 }
 
-
-/* gallery List */
-/* .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  max-width: calc(100vw - 80px);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-}
-
-.gallery li {
-  height: 450px;
-  overflow: hidden;
-}
-
-.gallery img {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.gallery a {
-  text-decoration: none;
-  color: #2a2a2a;
-} */
 .form-control{
 padding-left: 15px;
     width: 358px;
@@ -134,18 +103,17 @@ padding-left: 15px;
 }
 
 .title{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
 
-   margin-bottom: 30px;
-
-    font-weight: 900;
-    font-size: 44px;
-    line-height: 1.36;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #fff;
+        font-weight: 900;
+        font-size: 44px;
+        line-height: 1.36;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #fff;
 }
 
 .photo-card{
@@ -155,32 +123,39 @@ padding-left: 15px;
 }
 
 .container{
-  padding: 15px;
   margin: 15px;
-  
   width: 600px;
-
-background: linear-gradient(90deg,#cccaca 0%, #e9e8e8 80%);
-border-radius: 3px;
-
 }
 
-  .cont-border {
-    padding: 20px 24px;
-    border: 1px solid #eeeeee;
-    
-  }
+.container img{
+    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.thumb{
+  position: relative;
+    top: 0;
+    left: 0;
+}
 
 .stats{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0;
+    bottom: 0;
+    left: 0%;
+    height: 40px;
+    background: rgba(243, 236, 236, 0.8);
 }
 
 .stats-item{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-right: 20px;
 }
